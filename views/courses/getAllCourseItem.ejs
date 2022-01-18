@@ -241,7 +241,7 @@
           allowfullscreen></iframe>
           <h1 style="color: white;"><%= courseItem.name%></h1>
           <p style="color: white;"><%=courseItem.description %></p>
-          <input type="button" id="btnDeleteVideo" data-bs-id=<%= courseItem._id %> value="Delete">
+          <input type="button" class="btnDeleteVideo" data-bs-id=<%= courseItem._id %> value="Delete">
         </div>
       <%}); %>
       <% } %> 
@@ -250,9 +250,12 @@
 </div>
 <script>
   let frm= document.getElementById("frm");
-  document.getElementById("btnDeleteVideo").addEventListener('click', function(event){
+  let btnDeleteVideo= document.getElementsByClassName("btnDeleteVideo");
+  for (let i=0; i<btnDeleteVideo.length; i++){
+    btnDeleteVideo[i].addEventListener('click', function(event){
     let btn= event.target;
     frm.action="<%=`/courseitem/${courseId}/`%>"+btn.getAttribute("data-bs-id")+"?_method=DELETE";
     frm.submit();
   })
+  }
 </script>
