@@ -1,0 +1,59 @@
+<style>
+  h1{
+    color: white;
+    font-size: 50px !important;
+  }
+  label{
+    color: white;
+    font-size: 30px;
+  }
+  body{
+    background-color: #333;
+  }
+  .mainAddVideo{
+    width: 50%;
+    margin: 0  auto;
+  }
+  a{
+    background-color: white;
+    color: black;
+    padding: 2px;
+    text-decoration: none;
+  }
+  input{
+    cursor: pointer;
+    height: 40px;
+    width: 500px;
+  }
+  button{
+    padding: 5px;
+  }
+</style>
+
+<div class="formEdit">
+  <form method="POST" action="<%=`/course/edit/${course._id}?_method=PATCH`%>">
+    <caption><h1>Edit: <%=course?.name%></h1></caption>
+    <label for="name">Course name</label>
+    <br>
+    <input type="text" name="name" id="name" required value="<%=`${course?.name}`%>">
+    <br><br>
+    <label for="description">Course description</label>
+    <br>
+    <input type="text" name="description" id="description" required value="<%=`${course?.description}`%>">
+    <br><br>
+    <label for="name">Course Avatar</label>
+    <br>
+    <input type="text" name="img" id="name" required value="<%=`${course?.img}`%>">
+    <br><br>
+    <button id="btnUpdate">Update Course</button>
+    <br> <br>
+    <button><a href="/course">Back</a></button>
+  </form>
+</div>
+<script>
+  let frm = document.getElementById("formEdit");
+  document.getElementById("btnUpdate").addEventListener('click', function(){
+    frm.submit();
+    alert("Update successfully");
+  })
+</script>

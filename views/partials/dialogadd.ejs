@@ -1,0 +1,107 @@
+<!-- dialog theem khoa hoc  -->
+<style>
+  #launch-dialog {
+  background: tomato;
+  border-radius: 4px;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0.5rem 1rem;
+  position: static;
+}
+</style>
+<template id="dialog-template">
+  <script>
+    document.getElementById('launch-dialog').addEventListener('click', () => {
+      const wrapper = document.querySelector('.wrapper');
+      const closeButton = document.querySelector('button.close');
+      const wasFocused = document.activeElement;
+      wrapper.classList.add('open');
+      closeButton.focus();
+      closeButton.addEventListener('click', () => {
+        wrapper.classList.remove('open');
+        wasFocused.focus();
+      });
+    });
+  </script>
+  <style>
+    .wrapper {
+      opacity: 0;
+      transition: visibility 0s, opacity 0.25s ease-in;
+    }
+    .wrapper:not(.open) {
+      visibility: hidden;
+    }
+    .wrapper.open {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+      position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.8);
+      height: 100%;
+      position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      width: 100%;
+    }
+    .dialog {
+      background: #ffffff;
+      max-width: 600px;
+      padding: 1rem;
+      position: fixed;
+    }
+    button {
+      all: unset;
+      cursor: pointer;
+      font-size: 1.25rem;
+      position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+    button:focus {
+      border: 2px solid blue;
+    }
+    .formadd{
+      width: 500px !important;
+    }
+  </style>
+
+  <div class="wrapper">
+  <div class="overlay"></div>
+    <div class="dialog" role="dialog" aria-labelledby="title" aria-describedby="content">
+      <button class="close" aria-label="Close">✖️</button>
+      <div class="center formadd">
+          <form action="/course/create" method="POST">
+            <caption><b>Add Course</b> </caption> 
+            <br>
+            <br>
+            <label for="name">Course name</label> <br>
+            <input type="text" name="name" id="name" placeholder="Course name" required>
+            <br>
+            <br>
+            <label for="description">Description</label> <br>
+            <input type="text" name="description" id="description" placeholder="description" required>
+            <br>
+            <br>
+            <label for="img">Avatar</label> <br>
+            <input type="text" name="img" id="img" placeholder="image link" required>
+            <br>
+            <br>
+            <input type="submit" id="submid" value="Add Course">
+          </form>  
+        
+      </div>
+    </div>
+  </div>
+</template>
+

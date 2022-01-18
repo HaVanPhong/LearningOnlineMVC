@@ -1,0 +1,60 @@
+<style>
+  h1{
+    color: white;
+    font-size: 50px !important;
+  }
+  label{
+    color: white;
+    font-size: 30px;
+  }
+  body{
+    background-color: #333;
+  }
+  .mainAddVideo{
+    width: 50%;
+    margin: 0  auto;
+  }
+  a{
+    background-color: white;
+    color: black;
+    padding: 2px;
+    text-decoration: none;
+  }
+  input{
+    cursor: pointer;
+    height: 40px;
+    width: 500px;
+  }
+  button{
+    padding: 5px;
+  }
+</style>
+<div class="mainAddVideo" >
+  <form id="formS" action="/courseitem"  method="POST">
+    <caption><h1>Add video to <%= course.name%></h1></caption>
+    <label for="name">Video Name</label>
+    <br>
+    <input type="text" name="name" id="name" placeholder="video name" required>
+    <br><br>
+    <label for="description">Video description</label>
+    <br>
+    <input type="text" name="description" id="description" placeholder="Description" required>
+    <br><br>
+    <label for="videoId">Video ID</label>
+    <br>
+    <input type="text" name="videoId" id="videoId" placeholder="Video ID" required>
+    <br><br>
+    <label for="idCourse">Course ID</label>
+    <br>
+    <input type="text" name="course" value=<%= course._id%>>
+    <br><br>
+    <button type="submit" id="btnAddVideo">Add Video</button>
+    <br> <br>
+    <button><a href="/course">Back</a></button>
+  </form>
+</div>
+<script>
+  document.getElementById('formS').addEventListener('submit', ()=>{
+    alert("Add video successfully");
+  })
+</script>

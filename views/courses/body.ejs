@@ -1,0 +1,29 @@
+<div style="display: flex; flex-wrap: wrap; margin: 0 auto; width: 100%;">
+  <div style="justify-content: center; margin: 0 auto; display: flex; flex-wrap: wrap;">
+    <% if (course) { %>
+      <% course.forEach(function(cs){ %>
+        <div class="card" style="width: 200px; margin: 20px;">
+          <img src=<%=cs.img %> class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= cs.name %></h5>
+            <p class="card-text"><%= cs.description %></p>
+            <a class="btn btn-primary tolearn" href="<%= `/courseitem/${cs._id}` %>" >Learn</a>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+  
+</div>
+<script>
+  let toLearns= document.getElementsByClassName('tolearn');
+    for(let i=0; i<toLearns.length; i++){
+      toLearns[i].addEventListener('click', function (event) {
+      var a = event.target;
+      id = a.getAttribute('href');
+      // a.setAttribute("href", "/course/"+id)
+      console.log(id);
+    })
+  }
+
+</script>
